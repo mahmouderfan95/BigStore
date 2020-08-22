@@ -15,6 +15,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $Dashbordnamespace = 'App\Http\Controllers\Dashbord';
 
     /**
      * The path to the "home" route for your application.
@@ -22,6 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/home';
+    public const ADMIN = '/admin/dashbord';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -67,6 +69,7 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/web.php'));
     }
 
+
     /**
      * Define the "web" routes for the application.
      *
@@ -82,7 +85,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "web" routes for the application.
+     * Define the "dashbord" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
      *
@@ -91,7 +94,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDashbordRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace)
+            ->prefix('admin')
+            ->namespace($this->Dashbordnamespace)
             ->group(base_path('routes/dashbord.php'));
     }
 
