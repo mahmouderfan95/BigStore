@@ -22,6 +22,9 @@ Route::group(['middleware' => 'guest:admin'],function(){
 Route::group(['middleware'=>'auth:admin'],function(){
     Route::get('/dashbord','loginController@getDashbordPage')->name('admin.dashbord');
     Route::get('logout','loginController@logout')->name('logout');
+    // shpping method route
+    Route::group(['prefix'=> 'settings'],function(){
+        Route::get('shpping-method/{type}','settingController@edit_shpping')->name('edit.shpping.method');
+    });
 });
-
 /* middelware auth : admin */
