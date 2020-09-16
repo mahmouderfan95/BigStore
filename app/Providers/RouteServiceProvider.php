@@ -94,7 +94,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapDashbordRoutes()
     {
         Route::middleware('web')
-            ->prefix('admin')
+            // ->prefix('admin')
             ->namespace($this->Dashbordnamespace)
             ->group(base_path('routes/dashbord.php'));
     }
