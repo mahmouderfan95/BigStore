@@ -28,9 +28,9 @@ class SettingDatabaseSeed extends Seeder
             'outer_lable'           => true,
             'translatable' => [
                 'store_name'    => 'BigShow Store',
-                'free_shpping_lable'    => 'free shpping',
-                'local_lable'   => 'inner lable',
-                'outer_lable'   => 'outer lable'
+                'free_shpping_lable'    => 'توصيل مجانى',
+                'local_lable'   => 'توصيل داخلى',
+                'outer_lable'   => 'توصيل خارجى'
             ],
         ]);
     }
