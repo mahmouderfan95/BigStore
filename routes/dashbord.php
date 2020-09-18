@@ -25,12 +25,24 @@ Route::group(
     /* middleware guest : admin */
     /* middleware auth : admin */
     Route::group(['middleware'=>'auth:admin','prefix' => 'admin'],function(){
-        Route::get('/dashbord','loginController@getDashbordPage')->name('admin.dashbord');
-        Route::get('logout','loginController@logout')->name('logout');
+        Route::get('/','loginController@getDashbordPage')->name('admin.dashbord');
+        Route::get('logout','loginController@logout')->name('admin.logout');
         // shpping method route
         Route::group(['prefix'=> 'settings'],function(){
             Route::get('shpping-method/{type}','settingController@edit_shpping')->name('edit.shpping.method');
             Route::PUT('shpping-method/{id}','settingController@update_shpping')->name('update.shpping.method');
+        });
+
+        Route::group(['prefix' => 'profile'],function(){
+            Route::get('edit/{id}','profileController@editProfile')->name("edit.profile.admin");
+            Route::PUT("update/{id}",'profileController@updateProfile')->name("update.profile.admin");
+        });
+
+        Route::group(['prefix' => 'mainCategories'],function(){
+            Route::get('/','mainCategoriesController@index')->name('mainCategories.index');
+            Route::get("edit/{id}","mainCategoriesController@edit")->name("mainCategories.edit");
+            Route::put("update/{id}","mainCategoriesController@update")->name("mainCategories.update");
+
         });
     });
 /* middelware auth : admin */
