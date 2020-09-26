@@ -15,8 +15,15 @@ class Category extends Model
     public function ScopeParent($q){
         return $q->whereNull('parient_id');
     }
+    public function ScopeChild($q){
+        return $q->whereNotNull('parient_id');
+    }
 
     public function getActive(){
         return $this->is_active == 1 ? 'مفعل ': 'غير مفعل';
+    }
+
+    public function _parent(){
+        return $this->belongsTo(self::class , 'parient_id');
     }
 }
