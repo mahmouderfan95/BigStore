@@ -12,7 +12,7 @@
                                 </li>
                                 <li class="breadcrumb-item"><a href=""> الاقسام الرئيسية </a>
                                 </li>
-                                <li class="breadcrumb-item active"> تعديل - {{$category -> name}}
+                                <li class="breadcrumb-item active"> اضافه قسم جديد
                                 </li>
                             </ol>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title" id="basic-layout-form"> تعديل قسم رئيسي </h4>
+                                    <h4 class="card-title" id="basic-layout-form"> اضافه قسم رئيسي </h4>
                                     <a class="heading-elements-toggle"><i
                                             class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -43,12 +43,11 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                              action="{{route('mainCategories.update',$category -> id)}}"
+                                              action="{{route('mainCategories.store')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-                                            @method('PUT')
-                                            <input name="id" value="{{$category -> id}}" type="hidden">
+
 
                                             <div class="form-group">
                                                 <div class="text-center">
@@ -81,7 +80,7 @@
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{$category -> name}}"
+                                                                   value="{{old('name')}}"
                                                                    name="name">
                                                             @error("name")
                                                             <span class="text-danger">{{$message}}</span>
@@ -96,7 +95,7 @@
                                                             <input type="text" id="name"
                                                                    class="form-control"
                                                                    placeholder="  "
-                                                                   value="{{$category -> slug}}"
+                                                                   value="{{old('slug')}}"
                                                                    name="slug">
                                                             @error("slug")
                                                             <span class="text-danger">{{$message}}</span>
@@ -115,8 +114,7 @@
                                                             <input type="checkbox" value="1"
                                                                    name="is_active"
                                                                    id="switcheryColor4"
-                                                                   class="switchery" data-color="success"
-                                                                   @if($category -> is_active == 1)checked @endif/>
+                                                                   class="switchery" data-color="success" />
                                                             <label for="switcheryColor4"
                                                                    class="card-title ml-1">الحالة  </label>
 
