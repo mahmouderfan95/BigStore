@@ -9,5 +9,11 @@
     //     return app()->getLocale() == "ar" ? "rtl" : "ltr";
     // }
 
+    function uploadImage($folder,$image){
+        $image->store('/', $folder);
+        $filename = $image->hashName();
+        return  $filename;
+     }
+
 
 ?>

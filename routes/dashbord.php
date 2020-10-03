@@ -56,6 +56,14 @@ Route::group(
             Route::put("update/{id}","SubCategoryController@update")->name("subCategories.update");
             Route::get('delete/{id}','SubCategoryController@destroy')->name('subCategories.destroy');
         });
+        Route::group(['prefix' => 'brands'],function(){
+            Route::get('/','brandController@index')->name('brands.index');
+            Route::get('create','brandController@create')->name('brands.create');
+            Route::post('store','brandController@store')->name('brands.store');
+            Route::get("edit/{id}","brandController@edit")->name("brands.edit");
+            Route::put("update/{id}","brandController@update")->name("brands.update");
+            Route::get('delete/{id}','brandController@destroy')->name('brands.destroy');
+        });
     });
 /* middelware auth : admin */
 });
