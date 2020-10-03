@@ -64,6 +64,16 @@ Route::group(
             Route::put("update/{id}","brandController@update")->name("brands.update");
             Route::get('delete/{id}','brandController@destroy')->name('brands.destroy');
         });
+        /* ======== tags ======= */
+        Route::group(['prefix' => 'tags'],function(){
+            Route::get('/','TagController@index')->name('tags.index');
+            Route::get('create','TagController@create')->name('tags.create');
+            Route::post('store','TagController@store')->name('tags.store');
+            Route::get("edit/{id}","TagController@edit")->name("tags.edit");
+            Route::put("update/{id}","TagController@update")->name("tags.update");
+            Route::get('delete/{id}','TagController@destroy')->name('tags.destroy');
+        });
+        /* ======== tags ======= */
     });
 /* middelware auth : admin */
 });
