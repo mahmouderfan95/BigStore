@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashbord;
 
 use App\Http\Controllers\Controller;
+use App\Http\Enumoriation\categoryType;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\Dashbord\UpdatemainCategoryRequest;
@@ -12,28 +13,28 @@ use Illuminate\Support\Facades\DB;
 class mainCategoriesController extends Controller
 {
     public function index(){
-        $categories = Category::Parent()->paginate(PAGINATE_COUNT);
+        $categories = Category::orderBy('id','desc')->paginate(PAGINATE_COUNT);
         return view('dashbord.maincategories.index',compact('categories'));
     }
     public function create(){
-        return view('dashbord.maincategories.create');
+        $categories =   Category::get();
+        return view('dashbord.maincategories.create',compact('categories'));
     }
 
     public function store(UpdatemainCategoryRequest $request){
         try{
-
             if(!$request->has('is_active'))
                 $request->request->add(['is_active' => 0]);
             else
                 $request->request->add(['is_active' => 1]);
-
-            $categoryCreate = Category::create($request->all());
+            if($request->type == categoryType::mainCategory){
+                $request->request->add(['parient_id' => null]);
+            }
+            $categoryCreate = Category::create($request->except('_token'));
             $categoryCreate->name = $request->name;
             $categoryCreate->save();
             // dd($categoryCreate);
             return redirect()->route('mainCategories.index')->with(['success' => 'تمت اضافه القسم بنجاح']);
-
-
         }
         catch(\Exception $ex){
 
