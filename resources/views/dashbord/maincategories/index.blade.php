@@ -50,6 +50,7 @@
                                                 <th>#</th>
                                                 <th>الاسم </th>
                                                 <th> الاسم بالرابط </th>
+                                                <th>القسم الرئيسى</th>
                                                 <th>الحالة</th>
                                                 <th>صوره القسم</th>
                                                 <th>الإجراءات</th>
@@ -63,6 +64,7 @@
                                                         <td>{{$category->id}}</td>
                                                         <td>{{$category -> name}}</td>
                                                         <td>{{$category -> slug}}</td>
+                                                        <td>{{$category->_parent->name ??  '-'}}</td>
                                                         <td>{{$category -> getActive()}}</td>
                                                         <td> <img style="width: 150px; height: 100px;" src=" "></td>
                                                         <td>

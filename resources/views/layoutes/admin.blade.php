@@ -171,7 +171,7 @@
         meridians: true,setCurrentTime: false
     });
 </script>
-
+@yield('scripts')
 </body>
 </html>
 

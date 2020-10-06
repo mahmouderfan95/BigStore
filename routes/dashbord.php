@@ -45,7 +45,6 @@ Route::group(
             Route::get("edit/{id}","mainCategoriesController@edit")->name("mainCategories.edit");
             Route::put("update/{id}","mainCategoriesController@update")->name("mainCategories.update");
             Route::get('delete/{id}','mainCategoriesController@destroy')->name('mainCategories.destroy');
-
         });
 
         Route::group(['prefix' => 'subCategories'],function(){
