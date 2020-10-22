@@ -71,13 +71,16 @@
 
             <li class="nav-item">
                 <a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">تذاكر المراسلات   </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">المنتجات   </span>
                     <span
-                        class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
+                    class="badge badge badge-danger  badge-pill float-right mr-2">{{\App\Models\Product::count()}}</span>
                 </a>
                 <ul class="menu-content">
-                    <li class="active"><a class="menu-item" href=""
-                                          data-i18n="nav.dash.ecommerce"> تذاكر الطلاب </a>
+                    <li class="active"><a class="menu-item" href="{{route('product.index')}}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{route('product.general.create')}}" data-i18n="nav.dash.crypto">أضافة
+                        منتج جديد </a>
                     </li>
                 </ul>
             </li>
