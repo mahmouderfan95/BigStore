@@ -20,4 +20,7 @@ class Brand extends Model
     public function getPhotoAttribute($val){
         return ($val !== null) ? asset('assets/upload/brands/' . $val) : "";
     }
+    public function products(){
+        return $this->hasMany('App\Models\Product','brand_id');
+    }
 }

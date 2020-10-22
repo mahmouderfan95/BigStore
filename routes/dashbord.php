@@ -73,6 +73,15 @@ Route::group(
             Route::get('delete/{id}','TagController@destroy')->name('tags.destroy');
         });
         /* ======== tags ======= */
+
+
+        /* ================ products ============ */
+        Route::group(['prefix' => 'product'], function () {
+            Route::get('/','productController@index')->name('product.index');
+            Route::get('create','productController@create')->name('product.general.create');
+            Route::post('store','productController@store')->name('product.general.store');
+        });
+        /* ================ products ============ */
     });
 /* middelware auth : admin */
 });
