@@ -53,6 +53,10 @@ class Product extends Model
         return $this->is_active == 1 ? 'مفعل' : 'غير مفعل';
     }
 
+    public function ScopeSelection($q){
+        return $this->select('id','slug','price','created_at');
+    }
+
 
 
     public function tags()

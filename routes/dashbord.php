@@ -80,6 +80,12 @@ Route::group(
             Route::get('/','productController@index')->name('product.index');
             Route::get('create','productController@create')->name('product.general.create');
             Route::post('store','productController@store')->name('product.general.store');
+
+            Route::get('price/{id}','productController@getPrice')->name('product.price.create');
+            Route::post('price','productController@postPrice')->name('product.price.store');
+
+            Route::get('stock/{id}','productController@getStock')->name('product.stock.create');
+            Route::post('price','productController@postStock')->name('product.stock.store');
         });
         /* ================ products ============ */
     });
