@@ -84,15 +84,31 @@ class productController extends Controller
     }
 
     public function postStock(productStock $request){
-        try{
-            // return $request;
-        $product = Product::whereId($request->product_id)->update($request->except(['_token','product_id']));
-        return redirect()->route('product.index')->with(['success' => 'تم التحديث بنجاح']);
-        }
-        catch(\Exception $ex){
-            return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
-        }
+
+            dd($request);
+            $product = Product::whereId($request->product_id)->update($request->except(['_token','product_id']));
+            return redirect()->route('product.index')->with(['success' => 'تم التحديث بنجاح']);
+
+        // catch(\Exception $ex){
+        //     return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
+        // }
 
 
+    }
+
+    public function getImages($id){
+        return view('dashbord.product.images.create')->with(['id' => $id]);
+    }
+
+    public function saveImages(Request $request){
+        $file = $request->file('dzfile');
+        $filename = uploadImage('products',$file);
+        return response()->json([
+            'name' => $filename,
+            'original_name' => $file->getClientOriginalName()
+        ]);
+    }
+    public function saveImageDB(Request $request){
+        return $request;
     }
 }

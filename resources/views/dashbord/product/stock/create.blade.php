@@ -47,7 +47,6 @@
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-
                                             <input type="hidden" name="product_id" value="{{$id}}">
                                             <div class="form-body">
 
@@ -150,7 +149,7 @@
 
 @stop
 
-@section('script')
+@section('scripts')
 
     <script>
         // $("#manageStock").on('change',function(){
