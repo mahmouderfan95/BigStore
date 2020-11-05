@@ -28,7 +28,7 @@ class productStock extends FormRequest
             'product_id'    => 'required|exists:products,id',
             'mange_stock' => 'required|in:0,1',
             'in_stock' => 'required|in:0,1',
-            'qty' => 'required_if:mange_stock==1',
+            'qty' => 'required_if:mange_stock,==,1',
         ];
     }
 }
