@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Dashbord;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashbord\productGeneralRequest;
-use App\Http\Requests\dashbord\productPrice;
+use App\Http\Requests\Dashbord\productImage as DashbordProductImage;
+use App\Http\Requests\Dashbord\productPrice;
 use App\Http\Requests\Dashbord\productStock;
 use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 
@@ -84,20 +86,25 @@ class productController extends Controller
     }
 
     public function postStock(productStock $request){
-
-            dd($request);
-            $product = Product::whereId($request->product_id)->update($request->except(['_token','product_id']));
-            return redirect()->route('product.index')->with(['success' => 'تم التحديث بنجاح']);
-
-        // catch(\Exception $ex){
-        //     return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
-        // }
-
-
+            try{
+                // return $request;
+                $product = Product::whereId($request->product_id)->update($request->except(['_token','product_id']));
+                return redirect()->route('product.index')->with(['success' => 'تم التحديث بنجاح']);
+            }
+            catch(\Exception $ex){
+                return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
+            }
     }
 
     public function getImages($id){
-        return view('dashbord.product.images.create')->with(['id' => $id]);
+        try{
+            $product = Product::with('images')->findOrFail($id);
+            return view('dashbord.product.images.create',compact('product'));
+        }
+        catch(\Exception $ex){
+            return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
+        }
+
     }
 
     public function saveImages(Request $request){
@@ -108,7 +115,21 @@ class productController extends Controller
             'original_name' => $file->getClientOriginalName()
         ]);
     }
-    public function saveImageDB(Request $request){
-        return $request;
+    public function saveImageDB(DashbordProductImage $request){
+        try{
+            if($request->has('document') && count($request->document) > 0){
+                foreach($request->document as $image){
+                    ProductImage::create([
+                        'product_id'    => $request->product_id,
+                        'photo'         => $image
+                    ]);
+                }
+            }
+            return redirect()->back()->with(['success' => 'تم تحديث البيانات بنجاح']);
+        }
+        catch(\Exception $ex){
+            return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى اعاده المحاوله مره اخرى']);
+        }
+
     }
 }

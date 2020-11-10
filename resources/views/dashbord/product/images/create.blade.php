@@ -43,15 +43,19 @@
                                 @include('dashbord.includes.alerts.error')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
+                                        @if($product->images)
+                                            @foreach($product->images as $img)
+                                                <img src="{{asset('assets/upload/products/' . $img->photo)}}" width="50">
+                                            @endforeach
+                                        @endif
                                         <form class="form"
                                               action="{{route('product.images.store.db')}}"
                                               method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
 
-                                            <input type="hidden" name="product_id" value="{{$id}}">
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <div class="form-body">
-
                                                 <h4 class="form-section"><i class="ft-home"></i> صور المنتج </h4>
                                                 <div class="form-group">
                                                     <div id="dpz-multiple-files" class="dropzone dropzone-area">
@@ -59,8 +63,6 @@
                                                     </div>
                                                     <br><br>
                                                 </div>
-
-
                                             </div>
 
 
