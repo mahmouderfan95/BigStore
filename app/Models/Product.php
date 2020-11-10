@@ -20,7 +20,7 @@ class Product extends Model
         'special_price_end',
         'selling_price',
         'sku',
-        'mange_stock',
+        'manage_stock',
         'qty',
         'in_stock',
         'viewed',
@@ -48,6 +48,9 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsToMany('App\Models\Category','product_categories');
+    }
+    public function images(){
+        return $this->hasMany('App\Models\ProductImage','product_id');
     }
     public function getActive(){
         return $this->is_active == 1 ? 'مفعل' : 'غير مفعل';
