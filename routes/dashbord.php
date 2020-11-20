@@ -92,6 +92,16 @@ Route::group(
             Route::post('images/save_database','productController@saveImageDB')->name('product.images.store.db');
         });
         /* ================ products ============ */
+
+        /* ================ Attribute routes ===========*/
+        Route::group(['prefix' => 'attribute'],function () {
+            Route::get('/','attributeController@index')->name('attribute.index');
+            Route::get('create','attributeController@create')->name('attribute.create');
+            Route::post('store','attributeController@store')->name('attribute.store');
+            Route::get('edit/{id}','attributeController@edit')->name('attribute.edit');
+            Route::put('update/{id}','attributeController@update')->name('attribute.update');
+            Route::get('delete/{id}','attributeController@destroy')->name('attribute.destroy');
+        });
     });
 /* middelware auth : admin */
 });
