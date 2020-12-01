@@ -102,6 +102,16 @@ Route::group(
             Route::put('update/{id}','attributeController@update')->name('attribute.update');
             Route::get('delete/{id}','attributeController@destroy')->name('attribute.destroy');
         });
+
+        /* ================ Option routes ===========*/
+        Route::group(['prefix' => 'option'],function () {
+            Route::get('/','OptionController@index')->name('options.index');
+            Route::get('create','OptionController@create')->name('option.create');
+            Route::post('store','OptionController@store')->name('option.store');
+            Route::get('edit/{id}','OptionController@edit')->name('option.edit');
+            Route::put('update/{id}','OptionController@update')->name('option.update');
+            Route::get('delete/{id}','OptionController@destroy')->name('option.destroy');
+        });
     });
 /* middelware auth : admin */
 });

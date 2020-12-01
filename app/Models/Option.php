@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Option extends Model
 {
     use Translatable;
-    protected $fillable = ['attribute_id','product_id'];
+    protected $fillable = ['attribute_id','product_id','price'];
     protected $with = ['translations'];
     protected $translatedAttributes = ['name'];
     protected $hidden = ['created_at','updated_at'];
