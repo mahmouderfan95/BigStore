@@ -1,0 +1,97 @@
+/* Start Page Contact us */
+.contact-us {
+    background-image: url(../imgs/contact.png);
+    background-repeat: no-repeat;
+}
+.contact-us h2 {
+    color: #FFF; 
+    font-size: 30pt;
+}
+.contact-us p {
+    color: #FFF;
+     font-size: 16pt;
+}
+.contact-us .contact-info h3 {
+    float: right;
+    color: #797979;
+    padding-right: 30px;
+    color: #000;
+    font-family:'Tajawal', sans-serif;
+    font-weight: bold;
+    font-size: 16pt
+}
+.contact-us .contact-info p a {
+    float: right;
+    color: #797979;
+    padding-right: 30px;
+    color: #45b5d1;
+}
+.contact-us .contact-info p a:hover {
+    text-decoration: none;
+}
+
+/* End Page Contact us */
+
+/* Start Page About */
+.about .card {
+    margin-right: auto;
+    margin-left: auto;
+    
+}
+.socialIconsP {
+    padding-top: 10px;
+}
+.socialIconsP li {
+    list-style: none;
+    display: inline-block;
+    margin: 4px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    padding-top: 7px;
+}
+.socialIconsP li a img {
+	margin-left: 10px;
+}
+.socialIconsP .facebook,
+.socialIconsP .twitter,
+.socialIconsP .instagram,
+.socialIconsP .pinterest {
+    background-color: #000;
+}
+/* End Page About */
+
+/* Start page Team person */
+.Team-person {
+    margin-bottom: 100px;
+    padding-top: 100px;
+}
+.Team-person h2 {
+    padding-bottom: 50px;
+}
+.Team-person .nav-pills .nav-link {
+    color: #45b5d1;
+    font-size: 16pt;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.Team-person .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #45b5d1;
+    color: #fff;
+    font-size: 16pt;
+    font-weight: bold;
+}
+.Team-person .tab-content .tab-pane p {
+    background-color: #fff;
+}
+.Team-person h3 {
+    font-size: 14pt;
+    padding-top: 110px;
+    text-align: center
+}
+.Team-person h1 i {
+    font-size: 13pt;
+}
+
+/* End page Team person */

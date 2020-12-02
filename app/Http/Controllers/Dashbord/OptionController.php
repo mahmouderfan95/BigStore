@@ -60,7 +60,7 @@ class OptionController extends Controller
         }
 
     }
-    public function update($id,Request $request){
+    public function update($id,optionRequest $request){
         try{
             DB::beginTransaction();
             $option = Option::find($id);

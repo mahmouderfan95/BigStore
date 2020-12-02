@@ -12,7 +12,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){
 
-// Route::get('/', function () {
-//     return view('dashbord.dashbord');
-// });
+        Route::group(['prefix' => 'site', 'middleware' => 'auth:web'],function(){
+
+            // pages when user auth
+        });
+
+        Route::group(['prefix' => 'site', 'middleware' => 'guest:web'],function(){
+            // pages when user guest
+
+        });
+
+
+
+});
+Route::get('/', function () {
+    return view('site.home');
+});
