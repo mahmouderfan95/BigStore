@@ -19,7 +19,6 @@ Route::group(
     ], function(){
 
         Route::group(['prefix' => 'site', 'middleware' => 'auth:web'],function(){
-
             // pages when user auth
         });
 

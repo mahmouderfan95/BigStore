@@ -15,7 +15,7 @@
             </a>
         </div>
         <div class="ht-right">
-            <a href="#" class="login-panel">تسجيل الدخول<i class="fa fa-user mr-2"></i></a>
+            <a href="{{ route('login') }}" class="login-panel">تسجيل الدخول<i class="fa fa-user mr-2"></i></a>
             <div class="lan-selector text-white"> العربية
             </div>
         </div>

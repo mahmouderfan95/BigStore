@@ -14,11 +14,11 @@ $(document).ready(function () {
           slideBy: 1,
           items: 1,
       });
-  
-      // tween for Main Slider Owl change 
+
+      // tween for Main Slider Owl change
       mainOwl.on('changed.owl.carousel', function (e) {
           var scrollController = new ScrollMagic.Controller();
-  
+
           $(".owl-carousel.main-carousel #first-p").each(function () {
               var fadeUpScene = new ScrollMagic.Scene({
                   triggerElement: this,
@@ -35,10 +35,9 @@ $(document).ready(function () {
                   .setTween(TweenMax.from(this, 1, { x: 50, opacity: 0, ease: Power1.easeOut, delay: 0.5 }))
                   .addTo(scrollController)
           })
-  
+
       });
-  
+
   });
 
 
-  

@@ -72,13 +72,13 @@ a:focus {
 	background-color: #FF9F01;
 	border-color: #FF9F01;
   }
-  
+
   .btn-primary:hover {
 	color: #fff;
 	background-color: #e68e00;
 	border-color: #e68e00;
   }
-  
+
   .btn-primary:focus, .btn-primary.focus {
 	box-shadow: 0 0 0 0.2rem rgb(230, 142, 0);
   }
@@ -605,7 +605,7 @@ ol {
 
 /*---------------------
   Item Sale Section
------------------------*/ 
+-----------------------*/
 .bg-Collaction {
 	background-color: white;
 	border: 1px solid #d2d2d2;
@@ -1235,4 +1235,8 @@ ol {
 		padding-left: 15px;
 		padding-right: 15px;
 	}
+}
+.form-register{
+    max-width: 700px;
+    margin-top: 20px;
 }
