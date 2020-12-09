@@ -5,14 +5,17 @@
                 <span class="ml-3">عرض كل المنتجات</span>
                 <i class="fa fa-bars"></i>
                 <ul class="depart-hover">
-                    <li class="active"><a href="#">Women’s Clothing</a></li>
+                    @foreach($products as $product)
+                        <li class="active"><a href="#">{{ $product->name }}</a></li>
+                    @endforeach
+                    {{--  <li class="active"><a href="#">Women’s Clothing</a></li>
                     <li><a href="#">Men’s Clothing</a></li>
                     <li><a href="#">Underwear</a></li>
                     <li><a href="#">Kids Clothing</a></li>
                     <li><a href="#">Brand Fashion</a></li>
                     <li><a href="#">Accessories/Shoes</a></li>
                     <li><a href="#">Luxury Brands</a></li>
-                    <li><a href="#">Brand Outdoor Apparel</a></li>
+                    <li><a href="#">Brand Outdoor Apparel</a></li>  --}}
                 </ul>
             </div>
         </div>

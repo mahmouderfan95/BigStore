@@ -15,9 +15,18 @@
             </a>
         </div>
         <div class="ht-right">
-            <a href="{{ route('login') }}" class="login-panel">تسجيل الدخول<i class="fa fa-user mr-2"></i></a>
-            <div class="lan-selector text-white"> العربية
-            </div>
+            @if(auth('web')->guest())
+                <a href="{{ route('login') }}" class="login-panel">تسجيل الدخول<i class="fa fa-user mr-2"></i></a>
+            @endif
+            @if(auth()->user())
+                <a href="#" class="login-panel">{{ auth()->user()->fullName }}</a>
+                <form action="{{ route('logout') }}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="submit" value="تسجيل خروج" class="btn btn-danger mt-2">
+                </form>
+            @endif
+            {{--  <div class="lan-selector text-white"> العربية
+            </div>  --}}
         </div>
     </div>
 </div>
