@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Site\siteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,7 @@ Route::group(
 
         });
 
-
-
+        // home page
+        Route::get('/','siteController@homepage');
 });
-Route::get('/', function () {
-    return view('site.home');
-});
+
