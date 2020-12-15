@@ -131,6 +131,9 @@
                             <li><a class="menu-item" href="{{route('edit.shpping.method','outer')}}"
                                    data-i18n="nav.templates.vert.compact_menu">توصيل خارجى</a>
                             </li>
+                            <li><a class="menu-item" href="{{route('slider.create')}}"
+                                data-i18n="nav.templates.vert.compact_menu">اسلايدر الرئيسية </a>
+                            </li>
                         </ul>
                     </li>
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.horz.main">Horizontal</a>
