@@ -112,6 +112,12 @@ Route::group(
             Route::put('update/{id}','OptionController@update')->name('option.update');
             Route::get('delete/{id}','OptionController@destroy')->name('option.destroy');
         });
+
+        Route::group(['prefix' => 'sliders'], function () {
+            Route::get('/','sliderController@addImages')->name('slider.create');
+            Route::post('images','sliderController@SaveSliderImages')->name('slider.saveImages');
+            Route::post('images/db','sliderController@SaveSliderDB')->name('slider.saveImagesDB');
+        });
     });
 /* middelware auth : admin */
 });
