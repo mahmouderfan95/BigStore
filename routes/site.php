@@ -25,7 +25,7 @@ Route::group(
 
         Route::group(['prefix' => 'site', 'middleware' => 'guest:web'],function(){
             // pages when user guest
-
+            Route::get('category/{slug}','categoryController@productBySlug')->name('site.category');
         });
 
         // home page

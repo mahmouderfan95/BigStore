@@ -21,7 +21,26 @@
         </div>
         <nav class="nav-menu">
             <ul>
-                <li><a href="./index.html">العاب</a></li>
+                @if($categories)
+                    @foreach($categories as $cat)
+                        <li><a href="{{ route('site.category',$cat->slug) }}">{{ $cat->name }}</a>
+                            <ul class="dropdown">
+                                @if($cat->children)
+                                    @foreach($cat->children as $children)
+                                        <li><a href="{{ route('site.category',$children->slug) }}">{{ $children->name }}</a>
+                                            @if($children)
+                                                @foreach($children->children as $child)
+                                                    <li><a href="{{ route('site.category',$child->slug) }}">{{ $child->name }}</a></li>
+                                                @endforeach
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </li>
+                    @endforeach
+                @endif
+                {{--  <li><a href="./index.html">العاب</a></li>
                 <li><a href="./shop.html">الكترونية</a></li>
                 <li><a href="#">رياضة</a>
                     <ul class="dropdown">
@@ -31,7 +50,7 @@
                     </ul>
                 </li>
                 <li><a href="./blog.html">منزل</a></li>
-                <li><a href="./contact.html">ملابس و أزياء</a></li>
+                <li><a href="./contact.html">ملابس و أزياء</a></li>  --}}
                 <li class="active"><a href="#">الرئيسية</a></li>
             </ul>
         </nav>
