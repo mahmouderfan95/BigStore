@@ -13,10 +13,12 @@ class wishlistController extends Controller
             auth()->user()->wishlists()->attach($request->productId);
             return response()->json([
                 'msg'   => 'Success Msg',
+                'status'    => true,
             ]);
         }
         return response()->json([
             'error'   => 'Error Msg',
+            'status'    => false,
         ]);
     }
 }
