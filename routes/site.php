@@ -21,14 +21,17 @@ Route::group(
 
         Route::group(['prefix' => 'site', 'middleware' => 'auth:web'],function(){
             // pages when user auth
+            Route::post('wishlists','wishlistController@store')->name('wishlist.store');
         });
 
-        Route::group(['prefix' => 'site', 'middleware' => 'guest:web'],function(){
+        Route::group(['prefix' => 'site', 'middleware' => 'guest'],function(){
             // pages when user guest
-            Route::get('category/{slug}','categoryController@productBySlug')->name('site.category');
+
         });
 
         // home page
-        Route::get('/','siteController@homepage');
+        Route::get('/','siteController@homepage')->name('site.homepage');
+        Route::get('category/{slug}','categoryController@productBySlug')->name('site.category');
+        Route::get('product/{slug}','categoryController@productDetails')->name('site.productdetails');
 });
 

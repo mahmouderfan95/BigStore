@@ -1,4 +1,4 @@
-@extends('layoutes.site')
+@extends('layoutes.site-login')
 
 @section('content')
 <div class="container form-register">
