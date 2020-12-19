@@ -23,84 +23,19 @@
                         <div class="ml-auto mr-auto mt-2">
                             <h6 class="font-weight-bold">{{ floor($product->price)}} SAR</h6>
                         </div>
-                        <div>
-                            <i class="fa fa-shopping-cart fa-fw" data-productId="{{ $product->id }}"></i>
-                            <i class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
+                        <div class="mt-3">
+                            <i style = "font-size:27px" class="fa fa-shopping-cart fa-fw" data-productId="{{ $product->id }}"></i>
+                            @if((! auth()->user()->wishlistHas($product->id)))
+                                <i style = "font-size:27px" class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
+                            @endif
                         </div>
+                        <div style = "display:none" class="alert alert-danger alert-error" role="alert">
+                            {{ __('site.You_must_be_logged_in') }}
+                        </div>
+
                     </div>
                     @endforeach
                 @endisset
-
-                {{-- <div class="col-lg-2 col-sm-6 item-sale ">
-                    <img src="{{ asset('assets/site/imgs/products/women-1.jpg') }}" />
-                    <h5 class="mt-2">بلوفر نسائي</h5>
-                    <div class="ml-auto mr-auto mt-2">
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                    </div>
-                    <div class="ml-auto mr-auto mt-2">
-                        <h6 class="font-weight-bold">100 SR</h6>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-6 item-sale ">
-                    <img src="{{ asset('assets/site/imgs/products/man-3.jpg') }}" />
-                    <h5 class="mt-2">بلوفر نسائي</h5>
-                    <div class="ml-auto mr-auto mt-2">
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                    </div>
-                    <div class="ml-auto mr-auto mt-2">
-                        <h6 class="font-weight-bold">100 SR</h6>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-6 item-sale mr-auto">
-                    <img src="{{ asset('assets/site/imgs/products/women-3.jpg') }}" />
-                    <h5 class="mt-2">بلوفر نسائي</h5>
-                    <div class="ml-auto mr-auto mt-2 stars-fa">
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                    </div>
-                    <div class="ml-auto mr-auto mt-2">
-                        <h6 class="font-weight-bold">100 SR</h6>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-6 item-sale mr-auto">
-                    <img src="{{ asset('assets/site/imgs/products/women-4.jpg') }}" />
-                    <h5 class="mt-2">بلوفر نسائي</h5>
-                    <div class="ml-auto mr-auto mt-2 stars-fa">
-                        <i class="fa fa-star  stars-fa stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                    </div>
-                    <div class="ml-auto mr-auto mt-2">
-                        <h6 class="font-weight-bold">100 SR</h6>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-sm-6 item-sale ">
-                    <img src="{{ asset('assets/site/imgs/products/women-4.jpg') }}" />
-                    <h5 class="mt-2">بلوفر نسائي</h5>
-                    <div class="ml-auto mr-auto mt-2">
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                        <i class="fa fa-star stars-fa"></i>
-                    </div>
-                    <div class="ml-auto mr-auto mt-2">
-                        <h6 class="font-weight-bold">100 SR</h6>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
@@ -117,15 +52,24 @@
                 'x-CSRF-TOKEN' : "{{ csrf_token() }}"
             }
         });
+
         $('.addToFav').on('click',function(e){
             e.preventDefault();
+            @guest
+                $(".alert-error").show();
+            @endguest
             $.ajax({
                 type:'post',
                 url: "{{ route('wishlist.store') }}",
                 data:{
                     'productId' : $(this).attr('data-productId')
                 },
+                success:function(data){
 
+                },
+                error:function(data){
+
+                }
 
             });
         });
