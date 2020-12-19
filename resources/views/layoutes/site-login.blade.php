@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="csrf-token">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
@@ -31,16 +30,16 @@
                 @include('site.includes.inner-header')
                 <!-- inner header -->
             </div>
-            <!-- nav -->
+            {{--  <!-- nav -->
             @include('site.includes.nav-item')
-            <!-- nav -->
+            <!-- nav -->  --}}
         </header>
         <!-- Header End -->
         @yield('content')
         <!-- Footer Section Begin -->
         @include('site.includes.footer')
         <!-- Footer Section End -->
-        @yield('scripts')
+
         <!-- Js Plugins -->
         <script src="{{ asset('assets/site/js/jquery-3.4.1.js') }}"></script>
         <script src="{{ asset('assets/site/js/bootstrap.min.js') }}"></script>

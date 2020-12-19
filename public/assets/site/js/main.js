@@ -34,10 +34,16 @@ $(document).ready(function () {
               })
                   .setTween(TweenMax.from(this, 1, { x: 50, opacity: 0, ease: Power1.easeOut, delay: 0.5 }))
                   .addTo(scrollController)
-          })
+          });
 
       });
+    });
 
-  });
+
+
+
+
+
+
 
 

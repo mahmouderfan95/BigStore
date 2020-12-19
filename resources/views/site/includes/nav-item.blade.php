@@ -51,7 +51,7 @@
                 </li>
                 <li><a href="./blog.html">منزل</a></li>
                 <li><a href="./contact.html">ملابس و أزياء</a></li>  --}}
-                <li class="active"><a href="#">الرئيسية</a></li>
+                <li class="active"><a href="{{ route('site.homepage') }}">الرئيسية</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
