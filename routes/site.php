@@ -22,6 +22,8 @@ Route::group(
         Route::group(['prefix' => 'site', 'middleware' => 'auth:web'],function(){
             // pages when user auth
             Route::post('wishlists','wishlistController@store')->name('wishlist.store');
+            Route::delete('wishlists','wishlistController@destroy')->name('wishlist.destroy');
+            Route::get('wishlists/products','wishlistController@index')->name('wishlist.index');
         });
 
         Route::group(['prefix' => 'site', 'middleware' => 'guest'],function(){

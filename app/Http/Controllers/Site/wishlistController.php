@@ -12,13 +12,25 @@ class wishlistController extends Controller
         if(! auth()->user()->wishlistHas($request->productId)){
             auth()->user()->wishlists()->attach($request->productId);
             return response()->json([
-                'msg'   => 'Success Msg',
+                'wished'    => true,
                 'status'    => true,
             ]);
         }
         return response()->json([
-            'error'   => 'Error Msg',
+            'wished'    => false,
             'status'    => false,
         ]);
+    }
+
+    public function destroy(Request $request){
+        auth()->user()->wishlists()->detach($request->productId);
+        return response()->json([
+            'wishedDelete'  => true,
+            'status'        => true,
+        ]);
+    }
+    public function index(){
+        return  auth()->user()->wishlists()->latest()->get();
+
     }
 }

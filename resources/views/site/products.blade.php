@@ -25,14 +25,11 @@
                         </div>
                         <div class="mt-3">
                             <i style = "font-size:27px" class="fa fa-shopping-cart fa-fw" data-productId="{{ $product->id }}"></i>
-                            @if((! auth()->user()->wishlistHas($product->id)))
                                 <i style = "font-size:27px" class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
-                            @endif
                         </div>
-                        <div style = "display:none" class="alert alert-danger alert-error" role="alert">
-                            {{ __('site.You_must_be_logged_in') }}
-                        </div>
-
+                        @include('site.includes.error-unlogin')
+                        @include('site.includes.wished-success')
+                        @include('site.includes.wished-danger')
                     </div>
                     @endforeach
                 @endisset
@@ -56,7 +53,7 @@
         $('.addToFav').on('click',function(e){
             e.preventDefault();
             @guest
-                $(".alert-error").show();
+                $(".alert-danger-unlogin").show();
             @endguest
             $.ajax({
                 type:'post',
@@ -65,11 +62,11 @@
                     'productId' : $(this).attr('data-productId')
                 },
                 success:function(data){
-
+                    if(data.wished)
+                        $('.alert-success-wished').show().delay(350).fadeOut(250);
+                    else
+                        $('.alert-danger-wished').show().delay(350).fadeOut(250);
                 },
-                error:function(data){
-
-                }
 
             });
         });
