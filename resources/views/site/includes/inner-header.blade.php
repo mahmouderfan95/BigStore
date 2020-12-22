@@ -51,7 +51,7 @@
                     </div>
                 </li>
                 <li class="heart-icon">
-                    <a href="#">
+                    <a href="{{ route('wishlist.index') }}">
                         <i class="fa fa-heart"></i>
                         <span>1</span>
                     </a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -30,7 +32,16 @@ class wishlistController extends Controller
         ]);
     }
     public function index(){
-        return  auth()->user()->wishlists()->latest()->get();
+        try{
+            $wishlistsUser = auth()->user()->wishlists()->latest()->get();
+            $products = Product::get();
+            $categories = Category::get();
+            return view('site.wishlists.index',compact('wishlistsUser','products','categories'));
+        }
+        catch(\Exception $ex){
+
+        }
+
 
     }
 }
