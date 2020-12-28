@@ -31,6 +31,17 @@ class categoryController extends Controller
 
     public function productDetails($slug){
         $data = [];
+        $data['products'] = Product::get();
+        $data['categories'] = Category::Parent()->select('id','slug')->with(['children'=>function($q){
+            $q->select('id','slug','parient_id');
+            $q->with(['children' => function($qq){
+                $qq->select('id','slug','parient_id');
+                $qq->with(['children' => function($qqq){
+                    $qqq->select('id','slug','parient_id');
+                }]);
+            }]);
+        }])->get();
+
         $data['product'] = Product::where('slug',$slug)->first();
         if(!$data['product']){
 
