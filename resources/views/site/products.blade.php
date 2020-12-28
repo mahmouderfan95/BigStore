@@ -25,7 +25,7 @@
                         </div>
                         <div class="mt-3">
                             <i style = "font-size:27px" class="fa fa-shopping-cart fa-fw" data-productId="{{ $product->id }}"></i>
-                                <i style = "font-size:27px" class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
+                            <i style = "font-size:27px" class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
                         </div>
                         @include('site.includes.error-unlogin')
                         @include('site.includes.wished-success')
