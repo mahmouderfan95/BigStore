@@ -24,6 +24,14 @@ Route::group(
             Route::post('wishlists','wishlistController@store')->name('wishlist.store');
             Route::delete('wishlists','wishlistController@destroy')->name('wishlist.destroy');
             Route::get('wishlists/products','wishlistController@index')->name('wishlist.index');
+
+            // add to cart routes
+            Route::group(['prefix' => 'cart'],function(){
+                Route::get('/','cartController@index')->name('cart.index');
+                Route::post('add/{slug?}', 'cartController@postAdd')->name('cart.add');
+                Route::post('update/{slug}', 'cartController@postUpdate')->name('cart.update');
+                Route::post('update-all', 'cartController@postUpdateAll')->name('cart.update-all');
+            });
         });
 
         Route::group(['prefix' => 'site', 'middleware' => 'guest'],function(){

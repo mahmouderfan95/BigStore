@@ -4,7 +4,7 @@
             <ul class="nav-right">
                 </li>
                 <li class="cart-icon">
-                    <a href="#">
+                    <a href="{{ route('cart.index') }}">
                         <i class="fa fa-shopping-bag"></i>
                         <span>3</span>
                     </a>
