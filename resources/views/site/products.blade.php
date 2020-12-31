@@ -24,7 +24,7 @@
                             <h6 class="font-weight-bold">{{ floor($product->price)}} SAR</h6>
                         </div>
                         <div class="mt-3">
-                            <i style = "font-size:27px" class="fa fa-shopping-cart fa-fw" data-productId="{{ $product->id }}"></i>
+                            <i style = "font-size:27px" class="addToCart fa fa-shopping-cart fa-fw" data-productSlug="{{ $product->slug }}" data-productId="{{ $product->id }}"></i>
                             <i style = "font-size:27px" class="addToFav fa fa-heart fa-fw" data-productId="{{ $product->id }}"></i>
                         </div>
                         @include('site.includes.error-unlogin')
@@ -66,6 +66,28 @@
                         $('.alert-success-wished').show().delay(350).fadeOut(250);
                     else
                         $('.alert-danger-wished').show().delay(350).fadeOut(250);
+                },
+
+            });
+        });
+
+        $('.addToCart').on('click',function(e){
+            e.preventDefault();
+            @guest
+                $(".alert-danger-unlogin").show();
+            @endguest
+            $.ajax({
+                type:'post',
+                url: "{{ route('cart.add') }}",
+                data:{
+                    'productId' : $(this).attr('data-productId'),
+                    'productSlug'   : $(this).attr('data-productSlug')
+                },
+                success:function(data){
+                    {{--  if(data.wished)
+                        $('.alert-success-wished').show().delay(350).fadeOut(250);
+                    else
+                        $('.alert-danger-wished').show().delay(350).fadeOut(250);  --}}
                 },
 
             });
