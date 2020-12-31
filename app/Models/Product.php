@@ -61,10 +61,13 @@ class Product extends Model
     }
 
 
-
     public function tags()
     {
         return $this->belongsToMany('App\Models\Tag','product_tags');
+    }
+
+    public function options(){
+        return $this->hasMany('App\Models\Option','product_id');
     }
 
 }

@@ -92,6 +92,32 @@ Route::group(
             Route::post('images/save_database','productController@saveImageDB')->name('product.images.store.db');
         });
         /* ================ products ============ */
+
+        /* ================ Attribute routes ===========*/
+        Route::group(['prefix' => 'attribute'],function () {
+            Route::get('/','attributeController@index')->name('attribute.index');
+            Route::get('create','attributeController@create')->name('attribute.create');
+            Route::post('store','attributeController@store')->name('attribute.store');
+            Route::get('edit/{id}','attributeController@edit')->name('attribute.edit');
+            Route::put('update/{id}','attributeController@update')->name('attribute.update');
+            Route::get('delete/{id}','attributeController@destroy')->name('attribute.destroy');
+        });
+
+        /* ================ Option routes ===========*/
+        Route::group(['prefix' => 'option'],function () {
+            Route::get('/','OptionController@index')->name('options.index');
+            Route::get('create','OptionController@create')->name('option.create');
+            Route::post('store','OptionController@store')->name('option.store');
+            Route::get('edit/{id}','OptionController@edit')->name('option.edit');
+            Route::put('update/{id}','OptionController@update')->name('option.update');
+            Route::get('delete/{id}','OptionController@destroy')->name('option.destroy');
+        });
+
+        Route::group(['prefix' => 'sliders'], function () {
+            Route::get('/','sliderController@addImages')->name('slider.create');
+            Route::post('images','sliderController@SaveSliderImages')->name('slider.saveImages');
+            Route::post('images/db','sliderController@SaveSliderDB')->name('slider.saveImagesDB');
+        });
     });
 /* middelware auth : admin */
 });

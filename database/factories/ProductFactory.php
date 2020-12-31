@@ -11,7 +11,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'name' => $faker->text(60),
         'description' => $faker->paragraph(),
         'price' => $faker->numberBetween(10, 9000),
-        'mange_stock' => false,
+        'manage_stock' => false,
         'in_stock' => $faker->boolean(),
         'slug' => $faker->slug(),
         'sku' => $faker->word(),

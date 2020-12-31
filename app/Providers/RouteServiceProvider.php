@@ -16,13 +16,14 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
     protected $Dashbordnamespace = 'App\Http\Controllers\Dashbord';
+    protected $Sitenamespace = 'App\Http\Controllers\Site';
 
     /**
      * The path to the "home" route for your application.
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
     public const ADMIN = '/admin/dashbord';
 
     /**
@@ -80,7 +81,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapSiteRoutes()
     {
         Route::middleware('web')
-            ->namespace($this->namespace)
+            ->namespace($this->Sitenamespace)
             ->group(base_path('routes/site.php'));
     }
 
