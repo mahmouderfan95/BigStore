@@ -1,4 +1,5 @@
 @extends('layoutes.site')
+@section('title',$product->name)
 @section('content')
 <div class="container">
     <div class="card">

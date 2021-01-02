@@ -84,10 +84,10 @@
                     'productSlug'   : $(this).attr('data-productSlug')
                 },
                 success:function(data){
-                    {{--  if(data.wished)
-                        $('.alert-success-wished').show().delay(350).fadeOut(250);
+                    if(data.status)
+                        $('.alert-success-cart').show().delay(350).fadeOut(450);
                     else
-                        $('.alert-danger-wished').show().delay(350).fadeOut(250);  --}}
+                        $('.alert-danger-cart').show().delay(350).fadeOut(450);
                 },
 
             });

@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Providers;
-
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Support\Storage\Contracts\StorageInterface;
+use App\Support\Storage\SessionStorage;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        Schema::defaultStringLength(191);
+        $this->app->bind(StorageInterface::class, function ($app) {
+           return new SessionStorage('basket');
+       });
     }
 
     /**
