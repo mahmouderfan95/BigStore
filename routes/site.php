@@ -32,6 +32,10 @@ Route::group(
                 Route::post('update/{slug}', 'cartController@postUpdate')->name('cart.update');
                 Route::post('update-all', 'cartController@postUpdateAll')->name('cart.update-all');
             });
+            Route::group(['prefix' => 'payment'], function () {
+                Route::get('/{amount}', 'PaymentController@getPayments') -> name('payment');
+                Route::post('/', 'PaymentController@processPayment') -> name('payment.process');
+            });
         });
 
         Route::group(['prefix' => 'site', 'middleware' => 'guest'],function(){

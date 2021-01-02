@@ -21,7 +21,7 @@
         </div>
         <nav class="nav-menu">
             <ul>
-                @if($categories)
+                  @if($categories)
                     @foreach($categories as $cat)
                         <li><a href="{{ route('site.category',$cat->slug) }}">{{ $cat->name }}</a>
                             <ul class="dropdown">
@@ -40,17 +40,7 @@
                         </li>
                     @endforeach
                 @endif
-                {{--  <li><a href="./index.html">العاب</a></li>
-                <li><a href="./shop.html">الكترونية</a></li>
-                <li><a href="#">رياضة</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Mens</a></li>
-                        <li><a href="#">Womens</a></li>
-                        <li><a href="#">Kids</a></li>
-                    </ul>
-                </li>
-                <li><a href="./blog.html">منزل</a></li>
-                <li><a href="./contact.html">ملابس و أزياء</a></li>  --}}
+
                 <li class="active"><a href="{{ route('site.homepage') }}">الرئيسية</a></li>
             </ul>
         </nav>

@@ -1,23 +1,6 @@
 @extends('layoutes.site')
 
 @section('content')
-    <nav data-depth="1" class="breadcrumb-bg">
-        <div class="container no-index">
-            <div class="breadcrumb">
-
-                <ol itemscope="" itemtype="http://schema.org/BreadcrumbList">
-                    <li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem">
-                        <a itemprop="item" href="index-11.htm">
-                            <span itemprop="name">Home</span>
-                        </a>
-                        <meta itemprop="position" content="1">
-                    </li>
-                </ol>
-
-            </div>
-        </div>
-    </nav>
-
     <div class="container no-index">
         <div class="row">
             <div id="content-wrapper" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -31,6 +14,7 @@
                                      data-refresh-url="">
                                     @isset($basket)
                                         <ul class="cart-items">
+
                                             @foreach($basket -> all() as $product)
                                                 <li class="cart-item">
                                                     <div class="product-line-grid row spacing-10">
@@ -38,7 +22,7 @@
                                                         <div class="product-line-grid-left col-sm-2 col-xs-4">
                                                         <span class="product-image media-middle">
                                                           <img class="img-fluid"
-                                                               src="{{$product -> images[0] -> photo ?? ''}}"
+                                                               src="{{asset('assets/upload/products/' . $product -> images[0] -> photo)}}"
                                                                alt="Vehicula vel tempus sit amet ulte">
                                                         </span>
                                                         </div>
@@ -49,7 +33,7 @@
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <div class="product-line-info">
                                                                         <a class="label"
-                                                                           href="{{route('product.details',$product -> slug)}}"
+                                                                           href="{{route('site.productdetails',$product -> slug)}}"
                                                                            data-id_customization="0">{{$product -> name}}</a>
                                                                     </div>
 
@@ -103,7 +87,6 @@
                                                                                     data-id-customization="">
                                                                                     <i class="fa fa-trash-o"
                                                                                        aria-hidden="true"></i>
-
                                                                                 </a>
 
 
@@ -121,10 +104,7 @@
                                     @endisset
                                 </div>
                             </div>
-                            <a class="label btn btn-primary" href="http://demo.bestprestashoptheme.com/savemart/en/">
-                                Continue shopping
-                            </a>
-                            <!-- shipping informations -->
+
                         </div>
                         <!-- Right Block: cart subtotal & cart total -->
                         <div class="cart-grid-right col-xs-12 col-lg-3">
@@ -146,42 +126,35 @@
 
 
                                 <div class="checkout text-xs-center card-block">
-                                    <a href="{{route('payment',$basket -> subTotal())}}" type="button" class="btn btn-primary"> proceed to payment
+                                    <a href="#" type="button" class="btn btn-primary"> proceed to payment
                                     </a>
+                                    {{--  <a href="{{route('payment',$basket -> subTotal())}}" type="button" class="btn btn-primary"> proceed to payment
+                                    </a>  --}}
                                 </div>
 
 
                             </div>
 
 
-                            <div class="blockreassurance_product">
+                            {{--  <div class="blockreassurance_product">
                                 <div>
-            <span class="item-product">
-                                                        <img class="svg invisible"
-                                                             src="../modules/blockreassurance/img/ic_verified_user_black_36dp_1x.png">
-                                    &nbsp;
-            </span>
-                                    <p class="block-title" style="color:#000000;">Security policy (edit with
-                                        Customer reassurance module)</p>
+                                    <span class="item-product">
+                                        <img class="svg invisible" src="../modules/blockreassurance/img/ic_verified_user_black_36dp_1x.png">&nbsp;
+                                    </span>
+                                    <p class="block-title" style="color:#000000;">Security policy (edit with Customer reassurance module)</p>
                                 </div>
                                 <div>
-            <span class="item-product">
-                                                        <img class="svg invisible"
-                                                             src="../modules/blockreassurance/img/ic_local_shipping_black_36dp_1x.png">
-                                    &nbsp;
-            </span>
-                                    <p class="block-title" style="color:#000000;">Delivery policy (edit with
-                                        Customer reassurance module)</p>
+                                    <span class="item-product">
+                                        <img class="svg invisible" src="../modules/blockreassurance/img/ic_local_shipping_black_36dp_1x.png">&nbsp;
+                                    </span>
+                                    <p class="block-title" style="color:#000000;">Delivery policy (edit with Customer reassurance module)</p>
                                 </div>
                                 <div>
-            <span class="item-product">
-                                                        <img class="svg invisible"
-                                                             src="../modules/blockreassurance/img/ic_swap_horiz_black_36dp_1x.png">
-                                    &nbsp;
-            </span>
-                                    <p class="block-title" style="color:#000000;">Return policy (edit with Customer
-                                        reassurance module)</p>
-                                </div>
+                                    <span class="item-product">
+                                        <img class="svg invisible" src="../modules/blockreassurance/img/ic_swap_horiz_black_36dp_1x.png">&nbsp;
+                                    </span>
+                                    <p class="block-title" style="color:#000000;">Return policy (edit with Customer reassurance module)</p>
+                                </div>  --}}
                                 <div class="clearfix"></div>
                             </div>
 
@@ -193,18 +166,15 @@
         </div>
     </div>
 @stop
-remove-from-cart
 
 @section('scripts')
+<script src="{{ asset('assets/site/js/jquery-3.4.1.js') }}"></script>
     <script>
-
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         $(document).on('click', '.remove-from-cart', function (e) {
             e.preventDefault();
 

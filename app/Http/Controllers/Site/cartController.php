@@ -8,6 +8,7 @@ use App\Basket\Basket;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Exceptions\QuantityExceededException;
+use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
@@ -31,7 +32,6 @@ class CartController extends Controller
     public function __construct(Basket $basket)
     {
         $this->basket = $basket;
-
     }
 
     /**
@@ -41,8 +41,10 @@ class CartController extends Controller
 
     public function index()
     {
+        $products = Product::get();
+        $categories = Category::get();
         $basket = $this -> basket ;
-        return view('site.cart.index',compact('basket'));
+        return view('site.cart.index',compact('products','categories','basket'));
     }
 
     /**
@@ -55,7 +57,7 @@ class CartController extends Controller
      */
     public function postAdd(Request $request)
     {
-         $slug =$request -> product_slug ;
+         $slug = $request->productSlug;
          $product = Product::where('slug', $slug)->firstOrFail();
 
         try {
@@ -64,7 +66,9 @@ class CartController extends Controller
             return 'Quantity Exceeded';  // must be trans as the site is multi languages
         }
 
-        return 'Product added successfully to the card ';
+        return response()->json([
+            'status'  => true,
+        ]);
     }
 
     /**
