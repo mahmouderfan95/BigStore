@@ -35,19 +35,18 @@ class productController extends Controller
         return view('dashbord.product.general.create',$data);
     }
 
-    public function store(productGeneralRequest $request){
-        // try{
+    public function store(Request $request){
+        try{
             DB::beginTransaction();
-            if($request->has('is_active'))
-            $request->add(['is_active' => 1]);
-            else
-            $request->add(['is_active' => 0]);
-
-        $product = Product::create([
-            'slug' => $request->input('slug'),
-            'brand_id' => $request->input('brand_id'),
-            'is_active' => $request->input('is_active'),
-        ]);
+            // if($request->has('is_active'))
+            //     $request->add(['is_active' => 1]);
+            // else
+            //     $request->add(['is_active' => 0]);
+            $product = Product::create([
+                'slug' => $request->input('slug'),
+                'brand_id' => $request->input('brand_id'),
+                'is_active' => $request->input('is_active'),
+            ]);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->short_description = $request->input('short_description');
@@ -56,11 +55,11 @@ class productController extends Controller
         $product->categories()->attach($request->input('categories'));
         DB::commit();
         return redirect()->back()->with(['success' => 'تم اضافه المنتج بنجاح']);
-        // $product->tags()->attach($request->tags);
-        // }
-        // catch(\Exception $ex){
-        //     return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
-        // }
+        $product->tags()->attach($request->tags);
+        }
+        catch(\Exception $ex){
+            return redirect()->back()->with(['error' => 'هناك مشكله ما يرجى المحاوله مره اخرى']);
+        }
 
 
     }

@@ -112,7 +112,18 @@ Route::group(
             Route::put('update/{id}','OptionController@update')->name('option.update');
             Route::get('delete/{id}','OptionController@destroy')->name('option.destroy');
         });
-
+        Route::group(['prefix'  => 'roles'],function(){
+            Route::get('/','rolesController@index')->name('roles.index');
+            Route::get('create','rolesController@create')->name('roles.create');
+            Route::post('store','rolesController@store')->name('roles.store');
+            Route::get('edit/{id}','rolesController@edit')->name('roles.edit');
+            Route::post('update/{id}','rolesController@update')->name('roles.update');
+        });
+        Route::group(['prefix' => 'users'], function () {
+            Route::get('/','usersController@index')->name('users.index');
+            Route::get('create','usersController@create')->name('users.create');
+            Route::post('store','usersController@store')->name('users.store');
+        });
         Route::group(['prefix' => 'sliders'], function () {
             Route::get('/','sliderController@addImages')->name('slider.create');
             Route::post('images','sliderController@SaveSliderImages')->name('slider.saveImages');

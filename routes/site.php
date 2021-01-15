@@ -18,7 +18,6 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){
-
         Route::group(['prefix' => 'site', 'middleware' => 'auth:web'],function(){
             // pages when user auth
             Route::post('wishlists','wishlistController@store')->name('wishlist.store');

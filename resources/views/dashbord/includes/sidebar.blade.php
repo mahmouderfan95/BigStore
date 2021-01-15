@@ -22,7 +22,7 @@
             </li>
 
 
-            <li class="nav-item"><a href=""><i class="la la-group"></i>
+            {{--  <li class="nav-item"><a href=""><i class="la la-group"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">الاقسام الفرعيه </span>
                 <span
                     class="badge badge badge-danger badge-pill float-right mr-2">{{\App\Models\Category::Child()->count()}}</span>
@@ -35,7 +35,7 @@
                         فريق </a>
                     </li>
                 </ul>
-            </li>
+            </li>  --}}
 
             <li class="nav-item"><a href=""><i class="la la-male"></i>
                 <span class="menu-title" data-i18n="nav.dash.main">الماركات التجاريه  </span>
@@ -108,6 +108,7 @@
                     class="badge badge badge-danger  badge-pill float-right mr-2">{{\App\Models\Option::count()}}</span>
                 </a>
                 <ul class="menu-content">
+
                     <li class="active"><a class="menu-item" href="{{route('options.index')}}"
                                           data-i18n="nav.dash.ecommerce"> عرض الكل </a>
                     </li>
@@ -116,10 +117,39 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">الصلاحيات   </span>
+                    <span
+                    class="badge badge badge-danger  badge-pill float-right mr-2">{{\App\Models\Role::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{ route('roles.index') }}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{ route('roles.create') }}" data-i18n="nav.dash.crypto">أضافة
+                         صلاحيه جديده </a>
+                    </li>
+                </ul>
+            </li>
 
+            <li class="nav-item">
+                <a href=""><i class="la la-male"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main">مستخدمى الموقع   </span>
+                    <span
+                    class="badge badge badge-danger  badge-pill float-right mr-2">{{\App\Models\Admin::count()}}</span>
+                </a>
+                <ul class="menu-content">
+                    <li class="active"><a class="menu-item" href="{{ route('users.index') }}"
+                                          data-i18n="nav.dash.ecommerce"> عرض الكل </a>
+                    </li>
+                    <li><a class="menu-item" href="{{ route('users.create') }}" data-i18n="nav.dash.crypto">أضافة
+                         مستخدم جديد </a>
+                    </li>
+                </ul>
+            </li>
 
-            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"
-                                                                                    data-i18n="nav.templates.main">الاعدادات</span></a>
+            <li class=" nav-item"><a href="#"><i class="la la-television"></i><span class="menu-title"data-i18n="nav.templates.main">الاعدادات</span></a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="#" data-i18n="nav.templates.vert.main">وسائل التوصيل</a>
                         <ul class="menu-content">
@@ -147,12 +177,6 @@
                         </ul>
                     </li>
                 </ul>
-            </li>
-            <li class=" navigation-header">
-                <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
-                                                                        data-toggle="tooltip"
-                                                                        data-placement="right"
-                                                                        data-original-title="Layouts"></i>
             </li>
             <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title"
                                                                                  data-i18n="nav.page_layouts.main">Page layouts</span><span
