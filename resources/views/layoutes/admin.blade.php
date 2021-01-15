@@ -80,6 +80,7 @@
 
 @include('dashbord.includes.footer')
 <!-- BEGIN VENDOR JS-->
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script src="{{asset('assets/admin/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
 <!-- BEGIN VENDOR JS-->
 <script src="{{asset('assets/admin/vendors/js/tables/datatable/datatables.min.js')}}"
@@ -173,6 +174,19 @@
     $('#meridians14').timeDropper({
         meridians: true,setCurrentTime: false
     });
+</script>
+<script>
+    var prevNotifaction = $(".notifacation-counter").text(),
+    notifacation_counter = parseInt(prevNotifaction);
+    var pusher = new Pusher('a589e0935956ffad85af', {
+        cluster: 'eu'
+      });
+
+      var channel = pusher.subscribe('order');
+      channel.bind('App\\Event\\NewOrder', function(data) {
+        notifacation_counter +=1;
+        $(".notifacation-counter").text(notifacation_counter);
+      });
 </script>
 @yield('scripts')
 </body>

@@ -53,7 +53,7 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductImage','product_id');
     }
     public function getActive(){
-        return $this->is_active == 1 ? 'مفعل' : 'غير مفعل';
+        return $this->is_active == 1 ? 'غير مفعل' : 'مفعل';
     }
 
     public function ScopeSelection($q){
