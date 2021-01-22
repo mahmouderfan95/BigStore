@@ -166,7 +166,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a class="menu-item" href="#" data-i18n="nav.templates.horz.main">Horizontal</a>
+                    {{--  <li><a class="menu-item" href="#" data-i18n="nav.templates.horz.main">Horizontal</a>
                         <ul class="menu-content">
                             <li><a class="menu-item" href="../horizontal-menu-template"
                                    data-i18n="nav.templates.horz.classic">Classic</a>
@@ -175,10 +175,10 @@
                                    data-i18n="nav.templates.horz.top_icon">Full Width</a>
                             </li>
                         </ul>
-                    </li>
+                    </li>  --}}
                 </ul>
             </li>
-            <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title"
+            {{--  <li class=" nav-item"><a href="#"><i class="la la-columns"></i><span class="menu-title"
                                                                                  data-i18n="nav.page_layouts.main">Page layouts</span><span
                 class="badge badge badge-pill badge-danger float-right mr-2">New</span></a>
                 <ul class="menu-content">
@@ -1593,7 +1593,7 @@
                     class="la la-text-height"></i>
                     <span class="menu-title" data-i18n="nav.support_documentation.main">Documentation</span>
                 </a>
-            </li>
+            </li>  --}}
         </ul>
     </div>
 </div>
